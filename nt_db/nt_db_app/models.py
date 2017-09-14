@@ -4,9 +4,9 @@ from unittest.util import _MAX_LENGTH
 
 class City(models.Model):
 	city_name = models.CharField(max_length=20)
-	created_by = models.CharField(max_length=255)
+	created_by = models.ForeignKey(User, null=True, blank=True, related_name="city_entered")
     	created_on = models.DateTimeField(auto_now_add=True)
-    	modified_by = models.CharField(max_length=255)
+    	modified_by = models.ForeignKey(User, null=True, blank=True, related_name="city_modified")
     	modified_on = models.DateTimeField(auto_now=True)
     	is_active = models.BooleanField(default=True)
 
@@ -37,8 +37,8 @@ class Junction(models.Model):
     	mode = models.CharField(max_length=10, choices=SIGNAL)
     	total_cycle_time1 = models.CharField(max_length=10, choices=MODE)
     	total_cycle_time2 = models.IntegerField()
-    	created_by = models.CharField(max_length=255)
+    	created_by = models.ForeignKey(User, null=True, blank=True, related_name="junction_entered")
     	created_on = models.DateTimeField(auto_now_add=True)
-    	modified_by = models.CharField(max_length=255)
+    	modified_by = models.ForeignKey(User, null=True, blank=True, related_name="junction_modified")
     	modified_on = models.DateTimeField(auto_now=True)
     	is_active = models.BooleanField(default=True)
