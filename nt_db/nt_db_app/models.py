@@ -61,8 +61,6 @@ class Junction_data(models.Model):
 	mode = models.CharField(max_length=10, choices=MODE)
 	total_cycle_time1 = models.IntegerField()
 	total_cycle_time2 = models.IntegerField()
-	created_by = models.ForeignKey(User, null=True, blank=True, related_name="junction_data_entered")
 	created_on = models.DateTimeField(auto_now_add=True)
-	modified_by = models.ForeignKey(User, null=True, blank=True, related_name="junction_data_modified")
 	modified_on = models.DateTimeField(auto_now=True)
 	is_active = models.BooleanField(default=True)
