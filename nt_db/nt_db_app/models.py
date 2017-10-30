@@ -28,8 +28,9 @@ class Junction(models.Model):
 	is_active = models.BooleanField(default=True)
 
 class Junction_data(models.Model):
-	STATUS_TYPE = (('3', "GREEN"),
-				   ('4', "AMBER"))
+	STATUS_TYPE = (('02', "AMBER"),
+				   ('03', "GREEN"),
+				   ('04', "RED"))
 	SIGNAL = (('1', "OFF"),
 			  ('2', "BLINKER"),
 			  ('3', "SIGNAL"))
@@ -47,8 +48,8 @@ class Junction_data(models.Model):
 	status = models.CharField(max_length=10, choices=STATUS_TYPE)
 	normal_time = models.IntegerField()
 	step_elased_time = models.IntegerField()
-	cycle_elased_time1 = models.IntegerField()
-	cycle_elased_time2 = models.IntegerField()
+	cycle_elased_time1 = models.CharField(max_length=10, blank=True, null=True)
+	cycle_elased_time2 = models.CharField(max_length=10, blank=True, null=True)
 	working_on = models.CharField(max_length=10, choices=SIGNAL)
 	phase1 = models.CharField(max_length=10, blank=True, null=True)
 	phase2 = models.CharField(max_length=10, blank=True, null=True)
@@ -59,8 +60,8 @@ class Junction_data(models.Model):
 	phase7 = models.CharField(max_length=10, blank=True, null=True)
 	phase8 = models.CharField(max_length=10, blank=True, null=True)
 	mode = models.CharField(max_length=10, choices=MODE)
-	total_cycle_time1 = models.IntegerField()
-	total_cycle_time2 = models.IntegerField()
+	total_cycle_time1 = models.CharField(max_length=10, blank=True, null=True)
+	total_cycle_time2 = models.CharField(max_length=10, blank=True, null=True)
 	created_on = models.DateTimeField(auto_now_add=True)
 	modified_on = models.DateTimeField(auto_now=True)
 	is_active = models.BooleanField(default=True)
